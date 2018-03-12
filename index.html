@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>DocxTemplater</title>
+    <link href="css/materialize.css" rel="stylesheet">
+    <link href="css/app-style.css" rel="stylesheet">
+    <link href="css/material-icons.css" rel="stylesheet">
+
+
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <!-- normal script imports etc  -->
+    <script type="text/javascript" src="scripts/jquery.js"></script>     
+    <script type="text/javascript" src="scripts/vue.js"></script>     
+    <script type="text/javascript" src="scripts/materialize.js"></script>
+    <!-- Insert this line after script imports -->
+    <script>
+      if (window.module) module = window.module;
+      var $ = jQuery.noConflict();
+    </script>
+  </head>
+  <body>
+    <div id="app-toolbar">
+      <settings-button></settings-button>
+      <save-button></save-button>
+    </div>
+    <div id="app-content">
+
+    </div>      
+  </body>
+  <script type="text/javascript" src="components/config-buttons.js"></script> 
+</html>
