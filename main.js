@@ -8,8 +8,6 @@ const ipcMain = electron.ipcMain
 const dialog = electron.dialog
 const fs = require('fs');
 
-const configService = require('./scripts/services/configService.js');
-const storage = require('electron-json-storage');
 // Удерживайте глобальное обращение к объекту окна, если Вы так не сделаете, то
 // окно само закроется после того, как объект будет собран сборщиком мусора.
 var mainWindow;

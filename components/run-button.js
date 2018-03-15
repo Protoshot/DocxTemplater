@@ -100,7 +100,7 @@ function writeFile(file){
 function convertToPDF(filePath){
     var fileName = getFileNameByPath(filePath)
     var outDir = filePath.replace(fileName, '');
-    var command = store.libreDir + "\\" + store.convertLibreOfficeCommmand.replace('{FILE_PATH}', filePath).replace('{OUT_DIR}', outDir);
+    var command = store.convertLibreOfficeCommmand.replace('{LIBRE_DIR}', store.getTemplateParam("libreDir")).replace('{FILE_PATH}', filePath).replace('{OUT_DIR}', outDir);
 
     const { stdout, stderr } = exec(command);
     console.log('stdout:', stdout);

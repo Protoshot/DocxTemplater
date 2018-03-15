@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var appDir = path.dirname(require.main.filename);
-const CONFIG_FILE_PATH = appDir + '/config/config.json';
+const CONFIG_FILE_PATH = appDir + store.configJsonPath;
 
 var jsonData = null
 try {
