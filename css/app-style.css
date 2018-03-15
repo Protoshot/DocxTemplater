@@ -2,3 +2,28 @@
     margin: 20px;
     text-align: right;
 }
+
+#app-toolbar > * {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+[contenteditable]:focus {
+    outline: 0px solid transparent;
+}
+
+.add-params-row {
+    cursor: pointer;
+}
+
+.add-params-row:hover {
+    color : #26a69a;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.error-toast {
+    background-color: #c62828; 
+}

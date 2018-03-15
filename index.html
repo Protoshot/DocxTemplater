@@ -7,13 +7,30 @@
     <link href="css/app-style.css" rel="stylesheet">
     <link href="css/material-icons.css" rel="stylesheet">
 
-
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
     <!-- normal script imports etc  -->
-    <script type="text/javascript" src="scripts/jquery.js"></script>     
-    <script type="text/javascript" src="scripts/vue.js"></script>     
-    <script type="text/javascript" src="scripts/materialize.js"></script>
+    <script>
+      const path = require('path');
+      const fs = require('fs');
+      window.appDir = path.dirname(require.main.filename);
+      const electron = require('electron');
+      const ipcRenderer = electron.ipcRenderer;
+      const dialog = electron.remote.dialog;
+      const configService = require(window.appDir + '/scripts/services/configService.js');
+    </script>
+
+    <script type="text/javascript" src="scripts/lib/frameworks/jquery.js"></script>     
+    <script type="text/javascript" src="scripts/lib/frameworks/vue.js"></script>     
+    <script type="text/javascript" src="scripts/lib/frameworks/materialize.js"></script>
+    <script type="text/javascript" src="scripts/storage/storage.js"></script>
+
+    <script type="text/javascript" src="scripts/lib/docxtemplater.js"></script>
+    <script type="text/javascript" src="scripts/lib/FileSaver.min.js"></script>
+    <script type="text/javascript" src="scripts/lib/jszip-utils.js"></script>
+    <script type="text/javascript" src="scripts/lib/find.js"></script>
+
+    
     <!-- Insert this line after script imports -->
     <script>
       if (window.module) module = window.module;
@@ -22,12 +39,28 @@
   </head>
   <body>
     <div id="app-toolbar">
-      <settings-button></settings-button>
+      <run-button></run-button>
       <save-button></save-button>
     </div>
-    <div id="app-content">
-
+    <div id="app-content" class="container">
+      <file-selector field-storage-name="filePath" placeholder="Выберите подготовленный файл-шаблон формата docx" button-name="Выбрать шаблон"></file-selector>
+      <folder-selector field-storage-name="outDir" placeholder="Выберите папку для сохранения pdf файлов" button-name="Папка PDF"></folder-selector>
+      <folder-selector field-storage-name="libreDir" placeholder="Выберите папку куда установлен LibreOffice" button-name="Папка LibreOffice"></folder-selector>
+      <parameters-table></parameters-table>
     </div>      
   </body>
-  <script type="text/javascript" src="components/config-buttons.js"></script> 
+  <script type="text/javascript" src="components/save-button.js"></script> 
+  <script type="text/javascript" src="components/run-button.js"></script> 
+  <script type="text/javascript" src="components/file-selector.js"></script> 
+  <script type="text/javascript" src="components/folder-selector.js"></script>
+  <script type="text/javascript" src="components/parameters-table.js"></script>
+
+  <script>
+    new Vue({
+        el: "#app-toolbar"
+    });
+    new Vue({
+        el: "#app-content"
+    });
+  </script>
 </html>

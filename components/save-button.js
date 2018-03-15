@@ -1,13 +1,9 @@
-Vue.component('save-button', {
-    props: ['icon'],
-    template: '<a class="btn-floating btn-large waves-effect waves-light green" @click="save"><i class="material-icons">save</i></a>',
+Vue.component('saveButton', {
+    template: '<a data-position="bottom" data-delay="50" data-tooltip="Сохранить настройки" class="btn-floating btn-large waves-effect waves-light tooltipped" @click="onClickSave"><i class="material-icons">save</i></a>',
     methods : {
-        save : function (){
-            //console.log("onClickSaveConfigButton +2")
+        onClickSave : function (){
+            configService.writeConfig(store.template);
+            Materialize.toast('Настройки сохранены', 3000)
         }
     }
 });
-
-new Vue({
-    el: "#app-toolbar"
-})

@@ -32,11 +32,6 @@ function createWindow () {
     // соответствующий элемент.
     mainWindow = null
   })
-
-  var template = configService.getInitConfig();
-  if(template == null) {
-    
-  }
 }
 
 //Этот метод будет вызван, когда Electron закончит инициализацию

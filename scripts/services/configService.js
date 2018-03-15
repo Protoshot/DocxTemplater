@@ -1,29 +1,25 @@
 var fs = require('fs');
-var jsonData = require('../../config/config.json');
+var path = require('path');
+var appDir = path.dirname(require.main.filename);
+const CONFIG_FILE_PATH = appDir + '/config/config.json';
 
-var configService = {
-  getInitConfig : function(){
-    for(var i in jsonData){
-      if(jsonData[i].init){
-	    return jsonData[i];
-      }
-    }
-    return null;
-  },
-  
+var jsonData = null
+try {
+  jsonData = require(CONFIG_FILE_PATH);
+} catch (e) {
+  console.log("invalid jsonConfig")
+}
+
+
+var configService = {  
   readConfig : function(){
     return jsonData;
   },
   
-  writeConfig : function(template){
-    for(var i in jsonData){
-      var name = jsonData[i].name;
-      if(name == template.name) jsonData[i] = template;
-      break;
-    }
-     
-    fs.writeFile('config.json', JSON.stringify(jsonData), (err) => {  
-	if (err) throw err;
+  writeConfig : function(config){     
+    fs.writeFile(CONFIG_FILE_PATH,  JSON.stringify(config), (err) => {  
+    	if (err) throw err;
+      console.log("saved config");
     });
   
   }
